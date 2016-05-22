@@ -69,7 +69,6 @@ Because code is data and vice versa, quoting denotes what should and shouldn't b
 If that wasn't confusing enough, the backquote (or quasiquote) allows unquoting:
 
 ```lfe
-
 (defun list-quoted (arg1 arg2)
   '(arg1 arg2))
 
@@ -105,7 +104,48 @@ The syntax of the language is (mostly) identical to its ASTs.
 
 ---
 
-## Erlang idioms as a Lisp
+## Erlang idioms as a Lisp - Pattern Matching
+
+LFE idioms - such as pattern matching - are really Erlang idioms with a different syntax.
+
+![Pattern matching from LFE](patterns.png)
+
+---
+
+## Comparison to other BEAM languages
+<br/>
+
+| Feature		    | LFE		| Elixir	 | Erlang   |
+|:------------------------- |:----------------- |:-------------- |:------   |
+| Macros              	    | Unhygienic    	| Hygienic	 | C-style  |
+| Standard library    	    | Erlang+       	| Restructured	 | Original |
+| Runtime dependencies	    | None	    	| Elixir, Logger | None     |
+| In-REPL functions	    | Yes           	| No             | No       |
+
+---
+
+## Questions?
+
+---
+
+## Bonus slide #1
+
+The missing slide on macros
+
+```lfe
+(defmacro ->
+  ((x) x)
+  ((x sexp) (when (is_list sexp))
+   `(,(car sexp) ,x ,@(cdr sexp)))
+  ((x sexp)
+   `(list ,sexp ,x))
+  ((x sexp . sexps)
+   `(-> (-> ,x ,sexp) ,@sexps)))
+```
+
+---
+
+## Bonus slide #2
 
 ```lfe
 (defun universal-server ()
@@ -131,4 +171,3 @@ The syntax of the language is (mostly) identical to its ASTs.
     (data data)))
 ```
 
----
