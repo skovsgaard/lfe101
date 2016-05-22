@@ -54,7 +54,7 @@ Or a more erlangy helloworld:
 
 ---
 
-## What's with the apostrophes?
+## And what's with the apostrophes?
 
 Because code is data and vice versa, quoting denotes what should and shouldn't be evaluated:
 
@@ -92,7 +92,20 @@ LFE is in essence just an Erlang library.
 
 ---
 
-## Erlang idioms in Lisp, not the other way around.
+## Erlang idioms as a Lisp
+
+The purpose of LFE is not to force the semantics of any one Lisp dialect onto the Erlang VM, but rather to provide a transparent, efficient, homoiconic (or "syntaxless") front-end to Erlang.
+
+### Transparent:
+Interoperates seamlessly with Erlang and existing standard library.
+### Efficient:
+Shouldn't introduce a performance hit as you're still effectively writing Erlang.
+### Homoiconic:
+The syntax of the language is (mostly) identical to its ASTs.
+
+---
+
+## Erlang idioms as a Lisp
 
 ```lfe
 (defun universal-server ()
