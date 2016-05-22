@@ -83,6 +83,27 @@ If that wasn't confusing enough, the backquote (or quasiquote) allows unquoting:
 
 ---
 
+## What was that about code being data?
+
+Well, all Lisp code is just a list, which means extending the language becomes incredibly simple:
+
+```lfe
+(defmacro ->
+  ((x) x)
+  ((x sexp) (when (is_list sexp))
+   `(,(car sexp) ,x ,@(cdr sexp)))
+  ((x sexp)
+   `(list ,sexp ,x))
+  ((x sexp . sexps)
+   `(-> (-> ,x ,sexp) ,@sexps)))
+```
+
+<br/>
+
+This is the thread-first macro, which is not dissimilar to Elixir's `|>` macro.
+
+---
+
 ## Okay, so it's Lisp Flavored, but where's the Erlang?
 
 LFE is in essence just an Erlang library.
@@ -128,24 +149,7 @@ LFE idioms - such as pattern matching - are really Erlang idioms with a differen
 
 ---
 
-## Bonus slide #1
-
-The missing slide on macros
-
-```lfe
-(defmacro ->
-  ((x) x)
-  ((x sexp) (when (is_list sexp))
-   `(,(car sexp) ,x ,@(cdr sexp)))
-  ((x sexp)
-   `(list ,sexp ,x))
-  ((x sexp . sexps)
-   `(-> (-> ,x ,sexp) ,@sexps)))
-```
-
----
-
-## Bonus slide #2
+## Bonus slide
 
 ```lfe
 (defun universal-server ()
