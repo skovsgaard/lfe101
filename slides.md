@@ -85,7 +85,7 @@ If that wasn't confusing enough, the backquote (or quasiquote) allows unquoting:
 
 ## What was that about code being data?
 
-Well, all Lisp code is just a list, which means extending the language becomes incredibly simple:
+Well, all Lisp code is just a list, which means extending the language becomes quite straightforward:
 
 ```lfe
 (defmacro ->
