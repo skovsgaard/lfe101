@@ -15,6 +15,8 @@ Alien technology on BEAM
 2. Symbols
   ```lfe
   'a
+  'ok
+  'symbol
   ```
 3. Lists
   ```lfe
@@ -23,7 +25,7 @@ Alien technology on BEAM
   ```
 4. More lists
   ```lfe
-  '(1 a (1 2 3) (a b c))
+  '(1 im-a-symbol (1 2 3) (a b c))
   '((a 1) (b 2) (c 3))
   ```
 
